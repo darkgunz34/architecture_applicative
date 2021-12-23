@@ -2,11 +2,11 @@ package fr.architecture.model.entities;
 
 import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@NoArgsConstructor
+import java.time.LocalDate;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public final class Commande {
 
@@ -14,7 +14,15 @@ public final class Commande {
     @Setter
     double montantCommande;
 
-    public Commande(double montant) {
+    @Getter
+    @Setter
+    boolean status;
+
+    @Getter
+    LocalDate dateDeLaCommande;
+
+    public Commande(double montant,LocalDate date) {
         this.montantCommande = montant;
+        this.dateDeLaCommande = date;
     }
 }
