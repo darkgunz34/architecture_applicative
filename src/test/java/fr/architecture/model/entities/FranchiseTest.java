@@ -53,7 +53,7 @@ class FranchiseTest {
     @ValueSource(doubles = {1})
     void testCalculChiffreAffaireFranchise(double montant){
         Serveur serveur = ServeurFactory.getServeur();
-        serveur.ajouterCommande(CommandeFactory.getCommandeAvecMontant(montant,LocalDate.now()));
+        serveur.ajouterCommande(CommandeFactory.getCommandeBoissonAvecMontant(montant,LocalDate.now()));
 
         Restaurant restaurant = RestaurantFactory.getRestaurant();
         restaurant.ajouterServeur(serveur);

@@ -38,7 +38,7 @@ class ServeurTest {
     void testAjoutPrixCommandeAuChiffreAffaire(double montant){
 
         Serveur server = ServeurFactory.getServeur();
-        Commande commande = CommandeFactory.getCommandeAvecMontant(montant, LocalDate.now());
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now());
         server.ajouterCommande(commande);
 
         Assertions.assertNotNull(server,"L'objet serveur est null");
@@ -58,10 +58,10 @@ class ServeurTest {
 
         Serveur server = ServeurFactory.getServeur();
 
-        Commande commande = CommandeFactory.getCommandeAvecMontant(montant, LocalDate.now());
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now());
         server.ajouterCommande(commande);
 
-        Commande commande2 = CommandeFactory.getCommandeAvecMontant(montant, LocalDate.now());
+        Commande commande2 = CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now());
         server.ajouterCommande(commande2);
 
         Assertions.assertNotNull(server,"L'objet serveur est null");

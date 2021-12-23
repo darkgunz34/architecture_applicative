@@ -15,14 +15,25 @@ import java.util.List;
 public final class Serveur {
 
     @Getter
-    @Setter
     List<Commande> lstCommandes = new ArrayList<>();
 
     @Getter
-    @Setter
     List<Commande> lstCommandesFlagNonPayer = new ArrayList<>();
 
+    @Getter
+    List<Boissons> lstBoissons = new ArrayList<>();
+
+    @Getter
+    @Setter
+    Cuisine cuisineAssocier;
+
     public void ajouterCommande(final Commande commande) {
+        if(commande instanceof Boissons){
+            this.lstBoissons.add((Boissons) commande);
+        }else{
+            this.cuisineAssocier.ajouterUneCommandeEnCuisine((Nourriture) commande);
+        }
+
         this.lstCommandes.add(commande);
         LocalDate dateAvantControleGendarmerie = LocalDate.now().minusDays(15);
         if( dateAvantControleGendarmerie.compareTo(commande.getDateDeLaCommande()) >= 0){

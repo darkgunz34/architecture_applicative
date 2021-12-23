@@ -3,6 +3,7 @@ package fr.architecture.model.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.architecture.model.factory.CuisineFactory;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,27 +14,30 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 public class Restaurant {
 
-	@Getter
-	@Setter
-	List<Serveur> lstServeurs = new ArrayList<>();
+    @Getter
+    @Setter
+    List<Serveur> lstServeurs = new ArrayList<>();
 
-	@Getter
-	@Setter
-	int nbServeurs;
+    @Getter
+    Cuisine cuisine = CuisineFactory.getcuisine();
 
-	public Restaurant(List<Serveur> lstServeurs) {
-		this.lstServeurs = lstServeurs;
-	}
+    @Getter
+    @Setter
+    int nbServeurs;
 
-	public void ajouterServeur(final Serveur serveur) {
-		this.lstServeurs.add(serveur);
-	}
+    public Restaurant(List<Serveur> lstServeurs) {
+        this.lstServeurs = lstServeurs;
+    }
 
-	public double chiffreAffaireFranchise(){
-		double montantChiffreAffaire = 0;
-		for (Serveur server: this.lstServeurs) {
-			montantChiffreAffaire += server.getMontantTotalDesCommande();
-		}
-		return montantChiffreAffaire;
-	}
+    public void ajouterServeur(final Serveur serveur) {
+        this.lstServeurs.add(serveur);
+    }
+
+    public double chiffreAffaireFranchise(){
+        double montantChiffreAffaire = 0;
+        for (Serveur server: this.lstServeurs) {
+            montantChiffreAffaire += server.getMontantTotalDesCommande();
+        }
+        return montantChiffreAffaire;
+    }
 }

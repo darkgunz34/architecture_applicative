@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class Commande {
+public abstract class Commande {
 
     @Getter
     @Setter
@@ -21,7 +21,7 @@ public final class Commande {
     @Getter
     LocalDate dateDeLaCommande;
 
-    public Commande(double montant,LocalDate date) {
+    Commande(double montant,LocalDate date) {
         this.montantCommande = montant;
         this.dateDeLaCommande = date;
     }

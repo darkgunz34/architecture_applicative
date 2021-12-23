@@ -1,5 +1,6 @@
 package fr.architecture.model.entities;
 
+import fr.architecture.model.Tools;
 import fr.architecture.model.factory.CommandeFactory;
 import fr.architecture.model.factory.RestaurantFactory;
 import fr.architecture.model.factory.ServeurFactory;
@@ -28,22 +29,13 @@ class RestaurantTest {
     @ValueSource(ints = {0,1,2,100})
     void testCalculChiffreAffaireSuivantNbrServeurs(int serveur){
         int montantMontantCommande1 = 10;
-        int montantMontantCommande2 = 15;
-        int montantTotalDesDeuxCommande = montantMontantCommande1+montantMontantCommande2;
 
-        List<Serveur> lstServeurs = new ArrayList<>();
-        for(int i = 0;i<serveur;i++){
-            Serveur server1 = ServeurFactory.getServeur();
-            server1.ajouterCommande(CommandeFactory.getCommandeAvecMontant(montantMontantCommande1,LocalDate.now()));
-            server1.ajouterCommande(CommandeFactory.getCommandeAvecMontant(montantMontantCommande2,LocalDate.now()));
-            lstServeurs.add(server1);
-        }
+        List<Serveur> lstServeurs = Tools.getLstServeursAvecCommandeEtDateDuJour(10,serveur);
 
         Restaurant restaurant = RestaurantFactory.getRestaurantAvecServeur(lstServeurs);
-        
-        // assert
+
         Assertions.assertNotNull(restaurant,"L'objet serveur est null");
-        Assertions.assertEquals(serveur * montantTotalDesDeuxCommande,restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assertions.assertEquals(serveur * montantMontantCommande1,restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -53,7 +45,7 @@ class RestaurantTest {
     @ValueSource(doubles = {1})
     void testCalculChiffreAffaireSuivantNbrServeurs(double montant){
         Serveur serveur = ServeurFactory.getServeur();
-        serveur.ajouterCommande(CommandeFactory.getCommandeAvecMontant(montant,LocalDate.now()));
+        serveur.ajouterCommande(CommandeFactory.getCommandeBoissonAvecMontant(montant,LocalDate.now()));
 
         Restaurant restaurant = RestaurantFactory.getRestaurant();
         restaurant.ajouterServeur(serveur);

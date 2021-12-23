@@ -19,7 +19,7 @@ public class Tools {
 
         for(int i = 0;i<nombreDeServeur;i++){
             Serveur server1 = ServeurFactory.getServeur();
-            server1.ajouterCommande(CommandeFactory.getCommandeAvecMontant(montant, LocalDate.now()));
+            server1.ajouterCommande(CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now()));
             lstServeurs.add(server1);
         }
         return lstServeurs;

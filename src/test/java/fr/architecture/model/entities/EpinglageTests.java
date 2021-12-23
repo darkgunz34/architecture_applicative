@@ -27,7 +27,7 @@ class EpinglageTests {
     void testCommandeMoinsDeXJours(long nombreDeJourASoustraire){
         LocalDate date = LocalDate.now().minusDays(nombreDeJourASoustraire);
         Serveur server = ServeurFactory.getServeur();
-        Commande commande = CommandeFactory.getCommandeAvecMontant(10,date);
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(10,date);
 
         server.ajouterCommande(commande);
         Assertions.assertTrue(server.getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
@@ -39,7 +39,7 @@ class EpinglageTests {
     void testCommandeMoinsDeXJoursOk(long nombreDeJourASoustraire){
         LocalDate date = LocalDate.now().minusDays(nombreDeJourASoustraire);
         Serveur server = ServeurFactory.getServeur();
-        Commande commande = CommandeFactory.getCommandeAvecMontant(10,date);
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(10,date);
 
         server.ajouterCommande(commande);
         Assertions.assertFalse(server.getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
@@ -55,7 +55,7 @@ class EpinglageTests {
     void testCommandeATransmettreDepuisUnRestaurant(long nombreDeJourASoustraire){
         LocalDate date = LocalDate.now().minusDays(nombreDeJourASoustraire);
         Serveur server = ServeurFactory.getServeur();
-        Commande commande = CommandeFactory.getCommandeAvecMontant(10,date);
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(10,date);
         Restaurant restaurant = RestaurantFactory.getRestaurant();
 
         server.ajouterCommande(commande);
@@ -74,7 +74,7 @@ class EpinglageTests {
     void testCommandeTransmisALaGendarmerie(long nombreDeJourASoustraire){
         LocalDate date = LocalDate.now().minusDays(nombreDeJourASoustraire);
         Serveur server = ServeurFactory.getServeur();
-        Commande commande = CommandeFactory.getCommandeAvecMontant(10,date);
+        Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(10,date);
         Restaurant restaurant = RestaurantFactory.getRestaurant();
 
         server.ajouterCommande(commande);
