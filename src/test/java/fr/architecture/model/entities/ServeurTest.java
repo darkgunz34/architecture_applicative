@@ -1,7 +1,7 @@
-package fr.architecture.entities.model;
+package fr.architecture.model.entities;
 
-import fr.architecture.entities.factory.CommandeFactory;
-import fr.architecture.entities.factory.ServeurFactory;
+import fr.architecture.model.factory.CommandeFactory;
+import fr.architecture.model.factory.ServeurFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

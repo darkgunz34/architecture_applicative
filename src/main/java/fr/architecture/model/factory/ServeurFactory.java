@@ -1,6 +1,6 @@
-package fr.architecture.entities.factory;
+package fr.architecture.model.factory;
 
-import fr.architecture.entities.model.Serveur;
+import fr.architecture.model.entities.Serveur;
 
 public final class ServeurFactory {
 

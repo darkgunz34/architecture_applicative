@@ -1,4 +1,4 @@
-package fr.architecture.entities.model;
+package fr.architecture.model.entities;
 
 import lombok.AccessLevel;
 import lombok.Getter;

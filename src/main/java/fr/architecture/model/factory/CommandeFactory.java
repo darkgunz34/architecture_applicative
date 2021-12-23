@@ -1,6 +1,6 @@
-package fr.architecture.entities.factory;
+package fr.architecture.model.factory;
 
-import fr.architecture.entities.model.Commande;
+import fr.architecture.model.entities.Commande;
 
 public final class CommandeFactory {
 
