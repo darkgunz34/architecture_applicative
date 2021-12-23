@@ -19,7 +19,7 @@ class EpinglageTests {
 
     /*
     ÉTANT DONNE un serveur ayant pris une commande
-	QUAND il la déclare comme non-payée
+	QUAND il la déclare comme non payée
 	ALORS cette commande est marquée comme épinglée
      */
     @ParameterizedTest(name = "Commande non payer au serveur supérieur ou égale à 15 Jours")

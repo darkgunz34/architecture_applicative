@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class Restaurant {
 
 	@Getter
@@ -19,43 +19,21 @@ public class Restaurant {
 
 	@Getter
 	@Setter
-	double chiffreAffaireFranchise;
-
-	@Getter
-	@Setter
 	int nbServeurs;
+
+	public Restaurant(List<Serveur> lstServeurs) {
+		this.lstServeurs = lstServeurs;
+	}
 
 	public void ajouterServeur(final Serveur serveur) {
 		this.lstServeurs.add(serveur);
-		updateChiffreAffaireFranchise();
 	}
 
-	private void updateChiffreAffaireFranchise() {
-		this.chiffreAffaireFranchise = 0;
-		for (Serveur s : lstServeurs) {
-			this.chiffreAffaireFranchise += s.getChiffreAffaire();
+	public double chiffreAffaireFranchise(){
+		double montantChiffreAffaire = 0;
+		for (Serveur server: this.lstServeurs) {
+			montantChiffreAffaire += server.getMontantTotalDesCommande();
 		}
-	}
-
-	//TODO: G² => A revoir cette méthode car on passe pas un nombre de serveur à créer mais une liste de serveur.
-	public Restaurant(int nbServeur) {
-		this.nbServeurs = nbServeur;
-		for (int i = 0; i < nbServeur; i++) {
-			this.ajouterServeur(new Serveur());
-		}
-	}
-
-	//TODO: G² => A revoir cette méthode
-	public void SommeWhenSpecial() {
-		double special = 10;
-		int count = 0;
-		for (Serveur s : this.lstServeurs) {
-			if (s.getChiffreAffaire() == special) {
-				count += 1;
-			}
-		}
-		if (count == this.nbServeurs) {
-			this.chiffreAffaireFranchise = this.nbServeurs * special;
-		}
+		return montantChiffreAffaire;
 	}
 }

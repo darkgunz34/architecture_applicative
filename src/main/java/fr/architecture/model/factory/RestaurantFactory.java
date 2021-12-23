@@ -1,8 +1,11 @@
 package fr.architecture.model.factory;
 
 import fr.architecture.model.entities.Restaurant;
+import fr.architecture.model.entities.Serveur;
 
-public class RestaurantFactory {
+import java.util.List;
+
+public final class RestaurantFactory {
 	
 	private RestaurantFactory(){
 
@@ -12,8 +15,8 @@ public class RestaurantFactory {
         return new Restaurant();
     }
     
-    public static Restaurant getRestaurantAvecServeur(int nbServeur) {
-        return new Restaurant(nbServeur);
+    public static Restaurant getRestaurantAvecServeur(List<Serveur> lstServeurs) {
+        return new Restaurant(lstServeurs);
     }
 
 }

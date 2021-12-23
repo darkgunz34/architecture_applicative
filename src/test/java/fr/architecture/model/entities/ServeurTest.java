@@ -17,7 +17,7 @@ class ServeurTest {
 
     /*
     ÉTANT DONNÉ un nouveau serveur
-    QUAND on récupére son chiffre d'affaires
+    QUAND on récupère son chiffre d'affaires
     ALORS celui-ci est à 0
      */
     @Test()
@@ -25,7 +25,7 @@ class ServeurTest {
         Serveur server = ServeurFactory.getServeur();
 
         Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertEquals(0,server.getChiffreAffaire(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assertions.assertEquals(0,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -43,7 +43,7 @@ class ServeurTest {
 
         Assertions.assertNotNull(server,"L'objet serveur est null");
         Assertions.assertNotNull(commande,"L'objet commande est null");
-        Assertions.assertEquals(montant,server.getChiffreAffaire(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assertions.assertEquals(montant,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -67,6 +67,6 @@ class ServeurTest {
         Assertions.assertNotNull(server,"L'objet serveur est null");
         Assertions.assertNotNull(commande,"L'objet commande est null");
         Assertions.assertNotNull(commande2,"L'objet commande2 est null");
-        Assertions.assertEquals(montantSortie,server.getChiffreAffaire(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
+        Assertions.assertEquals(montantSortie,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
     }
 }
