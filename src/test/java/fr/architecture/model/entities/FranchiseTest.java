@@ -8,6 +8,7 @@ import fr.architecture.model.factory.ServeurFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.testng.Assert;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ class FranchiseTest {
 
         Franchise franchise = FranchiseFactory.getFranchiseAvecRestaurant(lstRestaurant);
 
-        Assertions.assertNotNull(restaurant,"L'objet restaurant est null");
-        Assertions.assertEquals(nombreDeServeur * montantMontantCommande * lstRestaurant.size(),franchise.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
+        Assert.assertNotNull(restaurant,"L'objet restaurant est null");
+        Assert.assertEquals(nombreDeServeur * montantMontantCommande * lstRestaurant.size(),(int) franchise.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
     }
 
     /*
@@ -61,8 +62,8 @@ class FranchiseTest {
         Franchise franchise = FranchiseFactory.getFranchise();
         franchise.ajouterRestaurant(restaurant);
 
-        Assertions.assertNotNull(franchise,"L'objet franchise est null");
-        Assertions.assertEquals(montant,franchise.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire de la franchise ne correspond pas au montant de la commande");
+        Assert.assertNotNull(franchise,"L'objet franchise est null");
+        Assert.assertEquals(montant,franchise.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire de la franchise ne correspond pas au montant de la commande");
     }
 
 }

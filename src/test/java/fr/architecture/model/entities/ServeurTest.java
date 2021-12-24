@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.Assert;
 
 import java.time.LocalDate;
 
@@ -24,8 +25,8 @@ class ServeurTest {
     void testInitServeurChiffreAffaire(){
         Serveur server = ServeurFactory.getServeur();
 
-        Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertEquals(0,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assert.assertNotNull(server,"L'objet serveur est null");
+        Assert.assertEquals(0,(int) server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -41,9 +42,9 @@ class ServeurTest {
         Commande commande = CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now());
         server.ajouterCommande(commande);
 
-        Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertNotNull(commande,"L'objet commande est null");
-        Assertions.assertEquals(montant,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assert.assertNotNull(server,"L'objet serveur est null");
+        Assert.assertNotNull(commande,"L'objet commande est null");
+        Assert.assertEquals(montant,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -64,9 +65,9 @@ class ServeurTest {
         Commande commande2 = CommandeFactory.getCommandeBoissonAvecMontant(montant, LocalDate.now());
         server.ajouterCommande(commande2);
 
-        Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertNotNull(commande,"L'objet commande est null");
-        Assertions.assertNotNull(commande2,"L'objet commande2 est null");
-        Assertions.assertEquals(montantSortie,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
+        Assert.assertNotNull(server,"L'objet serveur est null");
+        Assert.assertNotNull(commande,"L'objet commande est null");
+        Assert.assertNotNull(commande2,"L'objet commande2 est null");
+        Assert.assertEquals(montantSortie,server.getMontantTotalDesCommande(),"Le montant du chiffre d'affaire ne correspond pas au montant des commandes");
     }
 }

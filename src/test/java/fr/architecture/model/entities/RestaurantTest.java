@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.Assert;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,8 +35,8 @@ class RestaurantTest {
 
         Restaurant restaurant = RestaurantFactory.getRestaurantAvecServeur(lstServeurs);
 
-        Assertions.assertNotNull(restaurant,"L'objet serveur est null");
-        Assertions.assertEquals(serveur * montantMontantCommande1,restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
+        Assert.assertNotNull(restaurant,"L'objet serveur est null");
+        Assert.assertEquals(serveur * montantMontantCommande1,(int) restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant de la commande");
     }
 
     /*
@@ -50,7 +51,7 @@ class RestaurantTest {
         Restaurant restaurant = RestaurantFactory.getRestaurant();
         restaurant.ajouterServeur(serveur);
 
-        Assertions.assertNotNull(restaurant,"L'objet restaurant est null");
-        Assertions.assertEquals(montant,restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant total des commande du restaurant");
+        Assert.assertNotNull(restaurant,"L'objet restaurant est null");
+        Assert.assertEquals(montant,restaurant.chiffreAffaireFranchise(),"Le montant du chiffre d'affaire ne correspond pas au montant total des commande du restaurant");
     }
 }

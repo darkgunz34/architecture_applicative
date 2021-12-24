@@ -6,6 +6,7 @@ import fr.architecture.model.factory.ServeurFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.testng.Assert;
 
 import java.time.LocalDate;
 
@@ -61,7 +62,7 @@ class EpinglageTests {
         server.ajouterCommande(commande);
         restaurant.ajouterServeur(server);
 
-        Assertions.assertTrue(restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
+        Assert.assertTrue(restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
     }
 
     /*
@@ -80,9 +81,9 @@ class EpinglageTests {
         server.ajouterCommande(commande);
         restaurant.ajouterServeur(server);
 
-        Assertions.assertTrue(restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
-        Assertions.assertTrue(restaurant.getLstServeurs().get(0).transmissionALaGendarmerie().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
-        Assertions.assertEquals(0,restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().size(),"Il reste des commande non payer pour le serveur du restaurant");
-        Assertions.assertEquals(0,restaurant.getLstServeurs().get(0).getLstCommandes().size(),"Il reste des commande pour le serveur du restaurant");
+        Assert.assertTrue(restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
+        Assert.assertTrue(restaurant.getLstServeurs().get(0).transmissionALaGendarmerie().contains(commande),"La commande ne peut pas être envoyer à la gendarmerie");
+        Assert.assertEquals(0,restaurant.getLstServeurs().get(0).getLstCommandesFlagNonPayer().size(),"Il reste des commande non payer pour le serveur du restaurant");
+        Assert.assertEquals(0,restaurant.getLstServeurs().get(0).getLstCommandes().size(),"Il reste des commande pour le serveur du restaurant");
     }
 }

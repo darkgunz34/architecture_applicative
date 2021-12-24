@@ -5,6 +5,7 @@ import fr.architecture.model.factory.RestaurantFactory;
 import fr.architecture.model.factory.ServeurFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.testng.Assert;
 
 import java.time.LocalDate;
 
@@ -25,10 +26,10 @@ class CommandeTest {
         server.setCuisineAssocier(restaurant.getCuisine());
         server.ajouterCommande(commande);
 
-        Assertions.assertNotNull(commande,"L'objet commande est null");
-        Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertTrue(server.getLstCommandes().contains(commande),"La commande n'est pas prise en compte dans par le serveur");
-        Assertions.assertTrue(restaurant.getCuisine().getLstNourriture().contains(commande),"La commande n'a pas été envoyer à la cuisine");
+        Assert.assertNotNull(commande,"L'objet commande est null");
+        Assert.assertNotNull(server,"L'objet serveur est null");
+        Assert.assertTrue(server.getLstCommandes().contains(commande),"La commande n'est pas prise en compte dans par le serveur");
+        Assert.assertTrue(restaurant.getCuisine().getLstNourriture().contains(commande),"La commande n'a pas été envoyer à la cuisine");
     }
 
     /*
@@ -46,9 +47,9 @@ class CommandeTest {
         server.setCuisineAssocier(restaurant.getCuisine());
         server.ajouterCommande(commande);
 
-        Assertions.assertNotNull(commande,"L'objet commande est null");
-        Assertions.assertNotNull(server,"L'objet serveur est null");
-        Assertions.assertTrue(server.getLstCommandes().contains(commande),"La commande n'est pas prise en compte dans par le serveur");
-        Assertions.assertFalse(restaurant.getCuisine().getLstNourriture().contains(commande),"La commande n'a pas été envoyer à la cuisine");
+        Assert.assertNotNull(commande,"L'objet commande est null");
+        Assert.assertNotNull(server,"L'objet serveur est null");
+        Assert.assertTrue(server.getLstCommandes().contains(commande),"La commande n'est pas prise en compte dans par le serveur");
+        Assert.assertFalse(restaurant.getCuisine().getLstNourriture().contains(commande),"La commande n'a pas été envoyer à la cuisine");
     }
 }
