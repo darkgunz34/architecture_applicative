@@ -18,5 +18,9 @@ public final class RestaurantFactory {
     public static Restaurant getRestaurantAvecServeur(List<Serveur> lstServeurs) {
         return new Restaurant(lstServeurs);
     }
-
+    
+    public static Restaurant getRestaurantAvecServeur(List<Serveur> lstServeurs, List<Integer> lstTable) {
+        return new Restaurant(lstServeurs, lstTable);
+    }
+    
 }
