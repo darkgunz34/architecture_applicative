@@ -1,10 +1,6 @@
 package fr.architecture.integration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.contains;
-
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -12,6 +8,9 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
+import fr.architecture.model.entities.Restaurant;
+import fr.architecture.model.factory.RestaurantFactory;
+import fr.architecture.model.factory.ServeurFactory;
 import org.junit.jupiter.api.Test;
 
 import fr.architecture.model.entities.Boissons;
@@ -24,8 +23,13 @@ public class IntegrationTest {
 	public void commandIntegrationTest() {
 		
 		final DecimalFormat df = new DecimalFormat("0.00");
-		Serveur serv = new Serveur();
-		String path = "C:\\Users\\nicol\\Desktop\\architectureApplicativeDonnees.txt";
+
+		Serveur serveur = ServeurFactory.getServeur();
+		Restaurant restaurant = RestaurantFactory.getRestaurant();
+
+		serveur.setCuisineAssocier(restaurant.getCuisine());
+
+		String path = "./architectureApplicativeDonnees.txt";
     	String text = "";// = "boisson:10.5";
         String res = "";
         double priceDrink = 0;
@@ -92,11 +96,9 @@ public class IntegrationTest {
 	    		System.out.println(dbl);
 	    		System.out.println(date);
 	    		System.out.println(boisson);
-	    		System.out.println(serv);
-	    		System.out.println(serv.getMontantTotalDesCommande());
 	    		System.out.println(boisson.getMontantCommande());
 
-	    		serv.ajouterCommande(boisson);
+	    		serveur.ajouterCommande(boisson);
 	    	}else
 	    	{
 		    	words = line.split(":");
@@ -105,12 +107,8 @@ public class IntegrationTest {
 	    		System.out.println(dbl);
 	    		System.out.println(date);
 	    		System.out.println(nourriture);
-	    		System.out.println(serv);
-	    		System.out.println(serv.getMontantTotalDesCommande());
-	    		System.out.println(nourriture.getMontantCommande());
 
-	    		
-	    		serv.ajouterCommande(nourriture);
+				serveur.ajouterCommande(nourriture);
 	    	}
 	        sb.append(line);      
 	        res = sb.toString();
@@ -123,7 +121,7 @@ public class IntegrationTest {
 	    catch(IOException e)
 	    {
 	      e.printStackTrace();
-	    }				
+	    }
 	    
 	    
 		for (int i = 0; i < text.length(); i++) {
