@@ -12,7 +12,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public final class Serveur {
+public  class Serveur {
 
     @Getter
     List<Commande> lstCommandes = new ArrayList<>();
